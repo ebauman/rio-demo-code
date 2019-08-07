@@ -1,0 +1,17 @@
+apiVersion: build.knative.dev/v1alpha1
+kind: Build
+metadata:
+  name: test1
+spec:
+  source:
+    git:
+      revision: ceaee3f7f31433ad32c4a31d69da37dd4d0d84f0
+      url: https://github.com/StrongMonkey/demo.git
+  template:
+    arguments:
+      - name: IMAGE
+        value: rio-registry.io/daishan1992/demo:v1
+      - name: BUILDKIT_DAEMON_ADDRESS
+        value: tcp://buildkit
+    kind: ClusterBuildTemplate
+    name: buildkit
